@@ -9,41 +9,42 @@ import { ShowPlayerComponent } from './show-player.component';
     directives: [ShowPlayerComponent],
     templateUrl: 'app/distribute-roles.component.html'
     })
-export class DistributeRolesComponent implements OnInit {    
-    constructor(private siblingCommService: SiblingCommService) {}
+export class DistributeRolesComponent implements OnInit {
 
-    players:Player[];
-    topicInfo:TopicInfo;
+    players: Player[];
+    topicInfo: TopicInfo;
     chosenPlayer: Player;
     @Output() changeScreen = new EventEmitter<number>();
-    showModal:boolean = false;
-    
+    showModal: boolean = false;
+
+    constructor(private siblingCommService: SiblingCommService) {}
+
     playersRemainingToShow() {
         return this.players.filter(p => !p.shown)
     }
-    
+
     ngOnInit():any {
-        console.log("ngOnInit() in distribute-roles.component");
+        console.log('ngOnInit() in distribute-roles.component');
         this.players = this.siblingCommService.getPlayers();
         this.topicInfo = this.siblingCommService.getTopicInfo();
         this.players.forEach(p => p.shown = false);
     }
-    
-    start(){
+
+    start() {
         this.changeScreen.emit(3);
     }
-    
-    edit(){
+
+    edit() {
         this.changeScreen.emit(1);
     }
-    
+
     showFor(player){
         this.chosenPlayer = player;
         this.showModal = true;
         player.shown = true;
     }
-    
-    acceptInfo(){
+
+    acceptInfo() {
         this.showModal = false;
     }
 }

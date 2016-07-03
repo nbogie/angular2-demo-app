@@ -6,7 +6,7 @@ import { TopicInfo } from './topic-info';
 export class SiblingCommService {
     private makePlayer(n:string):Player {
         return {
-            name: n, 
+            name: n,
             isImpostor: false,
             shown: false
         }
@@ -14,9 +14,9 @@ export class SiblingCommService {
 
 
   players:Player[] = "Joe Larry Curly Moe".split(" ").map(n => this.makePlayer(n));
-    
+
   topicInfo:TopicInfo;
-  
+
   setData(players: Player[], topicInfo: TopicInfo) {
     this.players = players;
     this.topicInfo = topicInfo;

@@ -8,9 +8,9 @@ import { Player } from './player';
 })
 export class ShowPlayerComponent {
     @Input() topicInfo:TopicInfo;
-    @Input() player:Player;    
+    @Input() player:Player;
     @Output() dismiss = new EventEmitter<Player>();
-    
+
     close() {
         this.dismiss.emit(this.player);
     }

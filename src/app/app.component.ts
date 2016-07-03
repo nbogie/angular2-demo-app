@@ -15,14 +15,14 @@ import { SiblingCommService } from './sibling-comm.service';
   providers: [SiblingCommService]
 })
 export class AppComponent {
-    constructor(private siblingCommService: SiblingCommService) {}
-    
-    stage:number = 1;
+    stage: number = 1;
     title = 'Impostor (Angular 2)';
- 
-    //TODO: make into a ("fwd" | "back") nav request from a given stage.
+
+    constructor(private siblingCommService: SiblingCommService) {}
+
+    // TODO: make into a ("fwd" | "back") nav request from a given stage.
     changeScreen(event) {
-        this.stage = event;        
+        this.stage = event;
     }
 
 }
