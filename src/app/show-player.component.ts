@@ -7,8 +7,8 @@ import { Player } from './player';
     'templateUrl': 'app/show-player.component.html'
 })
 export class ShowPlayerComponent {
-    @Input() topicInfo:TopicInfo;
-    @Input() player:Player;
+    @Input() topicInfo: TopicInfo;
+    @Input() player: Player;
     @Output() dismiss = new EventEmitter<Player>();
 
     close() {

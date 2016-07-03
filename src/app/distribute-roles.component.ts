@@ -20,10 +20,10 @@ export class DistributeRolesComponent implements OnInit {
     constructor(private siblingCommService: SiblingCommService) {}
 
     playersRemainingToShow() {
-        return this.players.filter(p => !p.shown)
+        return this.players.filter(p => !p.shown);
     }
 
-    ngOnInit():any {
+    ngOnInit(): any {
         console.log('ngOnInit() in distribute-roles.component');
         this.players = this.siblingCommService.getPlayers();
         this.topicInfo = this.siblingCommService.getTopicInfo();
@@ -38,7 +38,7 @@ export class DistributeRolesComponent implements OnInit {
         this.changeScreen.emit(1);
     }
 
-    showFor(player){
+    showFor(player) {
         this.chosenPlayer = player;
         this.showModal = true;
         player.shown = true;

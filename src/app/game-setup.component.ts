@@ -9,7 +9,7 @@ import { SiblingCommService } from './sibling-comm.service';
     'templateUrl': 'app/game-setup.component.html'
 })
 export class GameSetupComponent implements OnInit {
-    players:Player[];
+    players: Player[];
     chosenTopicInfo: TopicInfo;
     candidateTopicInfo: TopicInfo;
     sampleTopics: TopicInfo[] = SAMPLE_TOPICS;
@@ -21,12 +21,12 @@ export class GameSetupComponent implements OnInit {
 
     deletePlayer(player) {
         // TODO: handle it not being there (and dups).  Do by ID not name.
-        let ix = this.players.findIndex(p => p.name === player.name)
+        let ix = this.players.findIndex(p => p.name === player.name);
         this.players.splice(ix, 1);
     }
 
     addPlayer() {
-        this.players.push({"name": "Steve", isImpostor: false, shown: false});
+        this.players.push({'name': 'Steve', isImpostor: false, shown: false});
     }
 
     allReady() {
@@ -35,7 +35,7 @@ export class GameSetupComponent implements OnInit {
 
     setOneImpostorRandomly() {
         this.players.forEach(p => p.isImpostor = false);
-        let pickedPlayer:Player = <Player>this.sample(this.players);
+        let pickedPlayer: Player = <Player>this.sample(this.players);
         pickedPlayer.isImpostor = true;
     }
 
@@ -45,14 +45,14 @@ export class GameSetupComponent implements OnInit {
         this.changeScreen.emit(2);
     }
 
-    ngOnInit():any {
-        console.log("ngOnInit() in game-setup comp");
+    ngOnInit(): any {
+        console.log('ngOnInit() in game-setup comp');
         this.players = this.siblingCommService.getPlayers();
         this.chosenTopicInfo = this.siblingCommService.getTopicInfo();
     }
 
-    sample(arr){
-        return arr[Math.floor(Math.random()*arr.length)];
+    sample(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
     }
 
     chooseRandomTopic() {
@@ -60,7 +60,7 @@ export class GameSetupComponent implements OnInit {
     }
 
     setTopic() {
-        this.candidateTopicInfo = { topic: "", category: "", difficulty: 0};
+        this.candidateTopicInfo = { topic: '', category: '', difficulty: 0};
         this.showModal = true;
     }
 

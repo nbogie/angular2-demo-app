@@ -4,28 +4,27 @@ import { TopicInfo } from './topic-info';
 
 @Injectable()
 export class SiblingCommService {
-    private makePlayer(n:string):Player {
-        return {
-            name: n,
-            isImpostor: false,
-            shown: false
-        }
-    }
 
+  players: Player[] = 'Joe Larry Curly Moe'.split(' ').map(n => this.makePlayer(n));
+  topicInfo: TopicInfo;
 
-  players:Player[] = "Joe Larry Curly Moe".split(" ").map(n => this.makePlayer(n));
-
-  topicInfo:TopicInfo;
+  private makePlayer(n: string): Player {
+      return {
+          name: n,
+          isImpostor: false,
+          shown: false
+      };
+  }
 
   setData(players: Player[], topicInfo: TopicInfo) {
     this.players = players;
     this.topicInfo = topicInfo;
   }
 
-  getPlayers():Player[] {
+  getPlayers(): Player[] {
     return this.players;
   }
-  getTopicInfo():TopicInfo {
+  getTopicInfo(): TopicInfo {
     return this.topicInfo;
   }
 }
