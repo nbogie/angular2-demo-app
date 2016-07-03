@@ -1,0 +1,9 @@
+.debug div{
+    border: 1px black solid;
+}
+.impostor {
+    border: 3px red solid;
+}
+body {
+    font-size: larger;
+}

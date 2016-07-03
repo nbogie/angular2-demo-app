@@ -1,0 +1,14 @@
+<show-player *ngIf="showModal" (dismiss)="acceptInfo($event)" [topicInfo]="topicInfo" [player]="chosenPlayer"></show-player>
+
+<div *ngIf="!showModal">
+    <h3 *ngIf="playersRemainingToShow().length > 0" class="text-center">Click your name.  Keep it secret!</h3>
+    <div *ngFor="let player of playersRemainingToShow()">
+        <button class="btn btn-default btn-lg btn-block"
+              (click)="showFor(player)"
+            [ngClass]="{impostor: player.isImpostor}">{{player.name}}
+        </button>
+    </div>
+
+    <button (click)="edit()" class="btn btn-lg btn-warning">Abandon Game...</button>
+    <button *ngIf="playersRemainingToShow().length === 0" (click)="start()" class="btn btn-lg btn-success">Start</button>
+</div>

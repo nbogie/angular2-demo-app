@@ -1,0 +1,6 @@
+<div class="jumbotron">
+    <h1 *ngIf="player.isImpostor">{{player.name}}, you're the impostor!</h1>
+    <h1 *ngIf="!player.isImpostor"><small>Topic is</small> {{topicInfo.topic}}</h1>
+    <h3>(Category: {{topicInfo.category}})</h3>
+    <button class="btn btn-info btn-lg btn-block" (click)="close()">Okay!</button>
+</div>
