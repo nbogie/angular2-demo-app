@@ -1,0 +1,11 @@
+Design decisions:
+==================
+
+On the use of shared service to share players between components:
+
+This currently relies on maintaining a reference to the shared array and always editing it in place.
+It would be better to just make a copy of the array as we move from stage to stage.
+        
+An alternative: 
+    Send all necessary information in the emitted event.
+
