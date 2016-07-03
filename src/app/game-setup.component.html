@@ -1,0 +1,46 @@
+<div *ngIf="showModal">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Topic: </h4>
+            </div>
+            <div class="col-xs-9">
+                <h4><input type="text" [(ngModel)]="candidateTopicInfo.topic"></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <h4>Category: </h4>
+            </div>
+            <div class="col-xs-9">
+                <h4><input type="text" [(ngModel)]="candidateTopicInfo.category"></h4>
+            </div>
+        </div>
+        <button class="btn btn-danger btn-lg btn-block" (click)="cancelSetTopic()">Cancel</button>
+        <button class="btn btn-success btn-lg btn-block" (click)="confirmSetTopic()">Save</button>
+    </div>
+</div>
+
+<div *ngIf="!showModal">
+
+    <div *ngFor="let player of players" class="row">
+        <div class="col-xs-8 col-md-offset-3 col-md-4"><input [(ngModel)]="player.name" class="form-control" [ngClass]="{impostor: player.isImpostor}"/></div>
+        <div class="col-xs-4 col-md-2"><button (click)="deletePlayer(player)" class="btn btn-danger btn-block">Delete {{player.name}}</button></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-3 col-md-6">
+            <button (click)="addPlayer()"         class="btn btn-block btn-lg btn-primary">Add Player</button>
+            <div class="row">
+                <div class="col-xs-4">
+                    <button (click)="setTopic()"          class='btn btn-block btn-lg btn-primary'>Set Topic</button>
+                </div>
+                <div class="col-xs-8">
+                    <button (click)="chooseRandomTopic()" class='btn btn-block btn-lg btn-primary'>Random Topic <span *ngIf="chosenTopicInfo"> - {{chosenTopicInfo.category}}</span></button>
+                </div>
+            </div>
+            <button *ngIf="allReady()" (click)="goToDistributeRoles()" class='btn btn-success btn-lg btn-block'>Next</button>
+        </div>
+    </div>
+
+</div>

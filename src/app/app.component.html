@@ -1,3 +1,7 @@
-<h1>
-  {{title}}
-</h1>
+<div class="row text-center"><h1 *ngIf="stage===1">{{title}}</h1></div>
+<div [ngSwitch]="stage" class="row">
+    <game-setup       *ngSwitchCase="1" (changeScreen)="changeScreen($event)"></game-setup>
+    <distribute-roles *ngSwitchCase="2" (changeScreen)="changeScreen($event)"></distribute-roles>
+    <in-play          *ngSwitchCase="3" (changeScreen)="changeScreen($event)"></in-play>
+    <span *ngSwitchDefault>no screen selected - strange stage?</span>
+</div>
